@@ -12,7 +12,6 @@ while abs(change) > 1e-4 && cyc < options.cycmax
     LL(cyc) = lossfunction(log_alpha,options); 
 
     % M step
-    options.updatesigma = 1;options.updaterest = 1;
     ModParaNew = updataPara(Y,gamma,kersi,options,ModPara);
     if cyc == 1    
         disp(['cycle = 1; loglikelihood = ',num2str(LL(1))]);
