@@ -12,13 +12,7 @@ while abs(change) > 1e-4 && cyc < options.cycmax
     LL(cyc) = lossfunction(log_alpha,options); 
 
     % M step
-    if (options.Initflag == 1) && (options.trainEM == 1)%(rem(cyc,2)) % SW initial, cyc = odd number
-        options.updatesigma = 0;options.updaterest = 1;
-    elseif (options.Initflag == 1) && (options.trainEM == 2)%(~(rem(cyc,2))) % SW initial, cyc = even number
-        options.updatesigma = 1;options.updaterest = 0;
-    else % random initial
-        options.updatesigma = 1;options.updaterest = 1;
-    end
+    options.updatesigma = 1;options.updaterest = 1;
     ModParaNew = updataPara(Y,gamma,kersi,options,ModPara);
     if cyc == 1    
         disp(['cycle = 1; loglikelihood = ',num2str(LL(1))]);
