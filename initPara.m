@@ -20,25 +20,12 @@ PiInit = rand(1,K);
 PiInit = PiInit./sum(PiInit);
 ModParaInit.Pi = PiInit;
 
-SWInitf = load('/Users/liu/Documents/MATLAB/MultiGuassian-HMM/SWFC.mat');
-%SWInitf = load('/Users/liu/Documents/MATLAB/HCPdata/SWFCK=6.mat');
-if options.Initflag == 0
-    disp('random Initial');
-    for k = 1:K
-        ModParaInit.state(k).mu = rand(1,D) - 0.5;
-        M = diag(rand(D,1));
-        Z = orth(rand(D,D));
-        ModParaInit.state(k).sigma = Z*M*Z';%sigma is Symmetric positive definite matrix
-    end
-
-elseif options.Initflag == 1
-    disp('initial by sliding window method');
-    for k = 1:K
-        ModParaInit.state(k).mu = rand(1,D) - 0.5;
-        ModParaInit.state(k).sigma = SWInitf.FC(1:40,1:40,k);
-%         ModParaInit.state(k).sigma = reshape(SWInitf.C(k,:),50,50);
-    end
+disp('random Initial');
+for k = 1:K
+    ModParaInit.state(k).mu = rand(1,D) - 0.5;
+    M = diag(rand(D,1));
+    Z = orth(rand(D,D));
+    ModParaInit.state(k).sigma = Z*M*Z';%sigma is Symmetric positive definite matrix
 end
 
 end
-
