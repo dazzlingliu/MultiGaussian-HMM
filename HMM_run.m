@@ -11,8 +11,10 @@ options.T = options.subT*ones(options.subN,1);
 options.D = 40;
 options.K = 4;
 options.cycmax = 20;
-outputdir = '/Users/liu/Documents/MATLAB/MultiGuassian-HMM/30s1000tp0.1noi/';
-%outputdir = '/Users/liu/Documents/MATLAB/MultiGuassian-HMM/HCPdata/200tp/';
+outputdir = [cd '/Result/'];
+if ~exist(outputdir,'file')
+    mkdir(outputdir);
+end
 
 %%
 % input
